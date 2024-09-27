@@ -1,3 +1,7 @@
+import useFetchUsers from "./hooks/useFetchUsers.ts";
+import User from "./User.tsx"
+import { User as UserType, SortUsersBy } from "./utils/types.ts";
+
 /**
  * Instructions:
  * Your task is to create a React component that displays a sorted list of users.
@@ -17,12 +21,41 @@
  *
  */
 
-const API_ENDPOINT = "https://66f44b0177b5e88970990f5f.mockapi.io/users";
 
-type User = {
-  id: string;
-  createdAt: string; // This is an ISO string eg. "2023-01-01T00:00:00.000Z"
-  name: string;
-  avatar: string; // This is a URL to an image
-};
+const Users = () => {
+  const {
+      users,
+      loading,
+      error
+  } = useFetchUsers(SortUsersBy.createdAt)
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!users && !error) {
+    return <div>No users to display</div>
+  }
+
+  return (
+    <div className={"users-container"}>
+      {
+        users.map((user : UserType) => (
+          <User
+            key={user.id}
+            id={user.id}
+            name={user.name}
+            createdAt={user.createdAt}
+            avatar={user.avatar}
+          />
+        ))
+      }
+    </div>
+  )
+}
+
+export default Users;

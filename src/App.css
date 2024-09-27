@@ -1,7 +1,7 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1.5rem;
   text-align: center;
 }
 
@@ -16,6 +16,38 @@
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.users-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  background-color: #FCFBFC;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.user-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-info {
+  text-align: left;
+  color: #2C2A2A;
+  padding-left: 2rem;
+}
+
+.user-name {
+  font-size: 2rem;
+  font-weight: 750;
 }
 
 @keyframes logo-spin {
@@ -40,3 +72,24 @@
 .read-the-docs {
   color: #888;
 }
+
+@media only screen and (max-width: 600px) {
+
+  .user-card {
+    font-size: 14px;
+    padding: 1.25rem
+  }
+
+  .user-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .user-name {
+    font-size: 1.25rem;
+    font-weight: 750;
+  }
+}
+

@@ -1,0 +1,1 @@
+export const USER_ENDPOINT : string = "https://66f44b0177b5e88970990f5f.mockapi.io/users";
